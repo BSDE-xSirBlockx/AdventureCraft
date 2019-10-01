@@ -13,7 +13,7 @@ It allows you to have full control of how mobs spawn on the player triggering bl
 
 On first start it will download all needed ressources needed to play the game.
 
-You can download the launcher * [here](https://github.com/BSDE-xSirBlockx/ACLauncher/releases/).
+You can download the launcher [here](https://github.com/BSDE-xSirBlockx/ACLauncher/releases/).
 
 ### Prerequisites
 
