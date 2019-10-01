@@ -12,6 +12,7 @@ It allows you to have full control of how mobs spawn on the player triggering bl
 ## Download
 
 On first start it will download all needed ressources needed to play the game.
+You will need the [64 Bit Offline Java JRE](https://www.java.com/de/download/manual.jsp) in order to run it without issues.
 
 You can download the launcher [here](https://github.com/BSDE-xSirBlockx/ACLauncher/releases/).
 
