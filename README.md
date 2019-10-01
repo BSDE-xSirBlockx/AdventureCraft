@@ -25,7 +25,7 @@ To run it you wont need more than your typical minecraft does.
 * **BSDE-xSirBlockx** - *Project Developer*
 * **RyuuM3gum1n** - *Project Manager*
 
-See also the list of [contributors](https://https://github.com/BSDE-xSirBlockx/ACLauncher/graphs/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/BSDE-xSirBlockx/ACLauncher/graphs/contributors) who participated in this project.
 
 ## Acknowledgments
 
