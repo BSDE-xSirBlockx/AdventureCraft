@@ -1,0 +1,185 @@
+{
+    "images":
+    {
+	
+		"logo":
+        {
+            "image" : "mainmenu:textures/logo.png",
+            "posX" : 90,
+            "posY" : 25,
+            "width" : 280,
+            "height" : 65,
+            "alignment" : "top_left"
+        }
+	
+	},
+    
+    "buttons":
+    {     
+		"singleplayer":
+        {
+            "text" : "Singleplayer",
+			"normalTextColor" : 12303291,
+			"hoverTextColor" : 3125670,
+			"texture" : "mainmenu:textures/btn.png",
+            "posX" : 20,
+            "posY" : -30,
+            "width" : 153,
+            "height" : 20,
+			imageWidth : 100,
+			imageHeight : 50,
+			"alignment" : "left_center",
+            "action" : 
+            {
+                "type" : "openGui",
+                "gui" : "singleplayer"
+            }
+        },		
+
+		"multiplayer":
+        {
+            "text" : "Multiplayer",			
+			"normalTextColor" : 12303291,
+			"hoverTextColor" : 3125670,
+			"texture" : "mainmenu:textures/btn.png",
+            "posX" : 20,
+            "posY" : -10,
+            "width" : 153,
+            "height" : 20,
+			imageWidth : 100,
+			imageHeight : 50,
+			"alignment" : "left_center",
+            "action" : 
+            {
+                "type" : "openGui",
+                "gui" : "multiplayer"
+            }
+        },
+               
+		"options":
+        {
+            "text" : "Options",
+			"normalTextColor" : 12303291,
+			"hoverTextColor" : 3125670,
+			"texture" : "mainmenu:textures/btn.png",
+            "posX" : 20,
+            "posY" : 10,
+            "width" : 153,
+            "height" : 20,
+			imageWidth : 100,
+			imageHeight : 50,
+			"alignment" : "left_center",
+            "action" : 
+            {
+                "type" : "openGui",
+                "gui" : "options"
+            }
+        },
+		        
+		"language":
+        {
+            "text" : "Language",
+			"texture" : "mainmenu:textures/btn.png",
+            "posX" : 20,
+            "posY" : 30,
+            "width" : 153,
+            "height" : 20,
+			imageWidth : 100,
+			imageHeight : 50,			
+			"alignment" : "left_center",
+            "action" : 
+            {
+                "type" : "openGui",
+                "gui" : "languages"
+            }
+        },
+                    
+        "quit":
+        {
+            "text" : "Quit",
+			"normalTextColor" : 16729156,
+			"hoverTextColor" : 14483456,
+			"texture" : "mainmenu:textures/btn.png",
+            "posX" : 20,
+            "posY" : 50,
+            "width" : 153,
+            "height" : 20,
+			imageWidth : 100,
+			imageHeight : 50,
+			"alignment" : "left_center",
+			"hoverText" : "No! Don't leave!",
+            "action" : 
+            {
+                "type" : "quit"
+            }
+	},
+    
+    "mods":
+        {
+            "text" : "Mods (#modsloaded#/#modsactive#)",
+			"normalTextColor" : 6710886,
+			"hoverTextColor" : 3125670,
+			"texture" : "mainmenu:textures/btn.png",
+            "posX" : -1000,
+            "posY" : -800,
+            "width" : 153,
+            "height" : 20,
+			imageWidth : 100,
+			imageHeight : 50,
+			imageWidth : 100,
+			imageHeight : 50,
+			"alignment" : "left_center",
+            "action" : 
+            {
+                "type" : "openGui",
+                "gui" : "mods"
+            }
+        }
+	},
+    
+    "texts":
+    {
+        "mojang":
+        {
+            "text" : "Forge #forgeversion# for Minecraft #mcversion# - Copyright Mojang AB. Do not distribute!",
+            "posX" : 2,
+            "posY" : -10,
+            "color" : -1,
+            "alignment" : "bottom_left"
+        },
+        
+		"packTxt":
+        {
+            "text" : "AAIII - 0.0.1a",
+            "posX" : 2,
+            "posY" : -25,
+            "color" : -1,
+            "alignment" : "bottom_left"
+        }
+    },
+    
+	
+	"alignments":
+    {
+        "c1":
+        {
+            "factorWidth" : 0.5,
+            "factorHeight" : 0.7
+        },
+ 
+        "c2":
+        {
+            "factorWidth" : 0.2,
+            "factorHeight" : 0.2
+        }
+    },
+	
+    "other":
+    {
+		"background":
+		{
+			"image" : "mainmenu:textures/bg.png",
+			"mode" : "stretch"
+		}
+    }
+}
