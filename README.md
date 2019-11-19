@@ -17,6 +17,7 @@ To run it you wont need more than your typical minecraft does.
 
 # Authors
 - **Cryect** - Initial AdventureCraft Creator
+- **Longor** - TaleCraft Developer
 - **BSDE-xSirBlockx** - Project Developer
 - **RyuuM3gum1n** - Project Manager
 
