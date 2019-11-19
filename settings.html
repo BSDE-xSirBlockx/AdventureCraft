@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>AdventureCraft Awakening</title>
+    <!-- CSS Styles -->
+    <link rel="stylesheet" href=".//inc/w3.css"> 
+    <link rel="stylesheet" href=".//inc/style.css">
+    <!-- JS -->
+    <script src=".//inc/FontawesomeIcons.js" crossorigin="anonymous"></script>
+  </head>
+  <body class="bgimg" style="-webkit-user-select: none; -webkit-user-drag: none; height: 525px;">
+
+    <div class="w3-animate-zoom" style="height: 525px;">
+
+      <!-- DRAG REGION -->
+      <div class="drag" style="width: 87%; height: 25px;">&af;</div>
+      <!-- DRAG REGION END -->
+
+      <!-- BUTTON FOR APP CLOSE/MINIMIZE -->
+      <div class="w3-display-topright">
+        <span id="quit" class="w3-button w3-hover-red">&times;</span>
+      </div>
+      <!-- END OF BUTTON --> 
+
+
+
+        <div id="form" class="w3-container w3-display-middle w3-text-grey w3-padding w3-round-medium" style="width: 84%; height: 71%;background-color: #292A2D;"><br>
+          <form>
+            <div>
+              <label>Minimal RAM</label>
+              <input type="range" min="1" step="1" unit="GB" class="slider" id="minram"><div id="min"></div>
+              <br>
+            </div>
+            <div>
+              <label>Maximal RAM</label>
+              <input type="range" min="1" step="1" unit="GB" class="slider" id="maxram"><div id="max"></div>
+              <button id="save" type="submit" class="w3-btn w3-xlarge w3-round-large w3-text-grey" style="position: absolute; bottom: 25%; top: 75%; left: 25%; height: 50px;">SAVE <i class="fas fa-save"></i></button><br>
+              <button id="folder" class="w3-btn w3-xlarge w3-round-large" style="background-color: rgba(36, 37, 37, 0.151); position: absolute; bottom: 25%; top: 75%; left: 55%; height: 50px;">SAVES  <i class="far fa-folder"></i></button>
+            </div>
+          </form>
+        </div>
+
+
+      <script>
+
+        
+        const {remote: { BrowserWindow }, ipcRenderer: ipc } = require("electron");
+        const os = require('os');
+        const fs = require('fs-extra');
+        window.$ = window.jQuery = require('.//inc/jquery-3.4.1.min.js');
+
+        //ON QUIT BUTTON
+        document.querySelector('#quit').addEventListener('click', function(e) {
+          //Prevent Default actions
+          e.preventDefault();
+          //Ask for WindowID 
+          ipc.send("appclose");
+          //Close Window with help of WindowID
+          ipc.on("appclose", (event,id) => {
+            BrowserWindow.fromId(id).close();
+          });
+        });
+        //END OF QUIT
+
+
+        //SLIDER
+
+        //Init
+        $('input[type="range"]').attr("max",  parseInt(os.totalmem()/(1024*1024*1024)));
+        
+        //read ram out of profile json
+        //Read Data out of JSON
+        let jsonFile = () => {
+          return new Promise((resolve, reject) => {
+            fs.readFile('resources/profile.json', 'utf8', function(err, data) {
+              if (err) reject(err);
+              else resolve(data);
+            });
+          });
+        };
+
+        jsonFile().catch(error => {
+          console.log(error);
+        }).then((data) => {
+          if(data !== undefined) {
+            //Get Data of JSON file as Object
+            parsed = JSON.parse(data);
+            //Set ram out of json to slider
+            $("#minram").attr("value", (parsed["user"]["minram"])/1024)
+            minram = (parsed["user"]["minram"])/1024;
+
+            $("#maxram").attr("value", (parsed["user"]["maxram"])/1024);
+            maxram = (parsed["user"]["maxram"])/1024;
+
+
+            //Set div
+            $("#min").html(minram+" GB");
+            $("#max").html(maxram+" GB");
+          }
+        });
+
+        //On Input
+        $("#minram").on('input',function() {
+          minram = $("#minram").val();
+          $("#min").html(minram+" GB");
+        });
+
+        $("#maxram").on('input',function() {
+          maxram = $("#maxram").val();
+          $("#max").html(maxram+" GB");
+        });
+
+        //END OF SLIDER
+
+
+
+        //ON SAVES BUTTON
+        document.querySelector('#folder').addEventListener('click', function(e) {
+          //Prevent Default actions
+          e.preventDefault();
+          //send main to open folder
+          ipc.send("openSaves");
+        });
+        //END OF SAVES
+
+
+
+        //BACK TO MAIN
+
+        document.querySelector('#save').addEventListener('click', function(e) {
+          e.preventDefault();
+          const {ipcRenderer} = require('electron');
+          let data = [document.getElementById("maxram").value,document.getElementById("minram").value];
+
+          const { remote: { BrowserWindow }, ipcRenderer: ipc } = require("electron");
+
+          parsed["user"]["minram"] = minram*1024;
+          parsed["user"]["maxram"] = maxram*1024;
+
+          let jsonContent = JSON.stringify(parsed);
+
+          console.log(jsonContent);
+          
+          fs.writeFile("resources/profile.json", jsonContent, 'utf8', function(err) {
+            if(err) {
+              console.log("FILE NOT WRITTEN");
+              return console.log(err);
+            }
+            console.log("File saved");
+          })
+
+
+          //Let main send ID of mainWindow for modify
+          ipc.send("send-window-id");
+          //load URL of main HTML
+          ipc.on("window-id-sent", (event,id) => {
+            BrowserWindow.fromId(id).loadURL(`file://${__dirname}/main.html`);
+          });
+
+        });
+
+      </script>
+
+    </div>
+  </body>
+</html>
