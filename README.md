@@ -10,7 +10,7 @@ AdventureCraft is primarily a minecraft mod made to aid players with their adven
 # Download
 On first start it will download all needed ressources needed to play the game. You will need the [64 Bit Offline Java JRE](https://www.java.com/de/download/) in order to run it without issues.
 
-You can download the launcher [here](https://github.com/BSDE-xSirBlockx/AdventureCraft/releases/latest).
+You can download the launcher [here](https://maps.adventurecraft.gq/launcher).
 
 # Prerequisites
 To run it you wont need more than your typical minecraft does.
