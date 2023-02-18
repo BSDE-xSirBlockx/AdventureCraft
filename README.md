@@ -8,7 +8,7 @@ AdventureCraft is primarily a minecraft mod made to aid players with their adven
 - Fully scripted interaction and behavior
 
 # Download
-You can download the launcher [here](https://adventurecraft.gq/).
+You can download the launcher [here](https://adventurecraft.dev/).
 
 # Prerequisites
 To run it you wont need more than your typical minecraft does.
